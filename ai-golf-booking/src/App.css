@@ -1,0 +1,455 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8fbff 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00a4e4;
+  margin: 0;
+}
+
+.beta-badge {
+  position: absolute;
+  right: 20px;
+  background: #e8f5fc;
+  color: #00a4e4;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.prompt-text {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.prompt-text p {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00a4e4;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Robot Animation */
+.robot-container {
+  margin-bottom: 60px;
+  perspective: 1000px;
+}
+
+.robot {
+  width: 200px;
+  height: 240px;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.robot-head {
+  width: 140px;
+  height: 120px;
+  background: white;
+  border-radius: 30px;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 0 10px 40px rgba(0, 164, 228, 0.15);
+}
+
+.antenna {
+  position: absolute;
+  width: 3px;
+  height: 30px;
+  background: linear-gradient(to bottom, #4dd4c8, transparent);
+  top: -25px;
+}
+
+.left-antenna {
+  left: 30px;
+  animation: antennaWave 2s ease-in-out infinite;
+}
+
+.right-antenna {
+  right: 30px;
+  animation: antennaWave 2s ease-in-out infinite 1s;
+}
+
+@keyframes antennaWave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+}
+
+.antenna-ball {
+  width: 12px;
+  height: 12px;
+  background: #4dd4c8;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(77, 212, 200, 0.5);
+}
+
+.screen {
+  width: 100px;
+  height: 70px;
+  background: linear-gradient(135deg, #00a4e4 0%, #0088cc 100%);
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.eye {
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  animation: blink 4s ease-in-out infinite;
+}
+
+.left-eye {
+  left: 20px;
+}
+
+.right-eye {
+  right: 20px;
+}
+
+@keyframes blink {
+  0%, 48%, 52%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.1);
+  }
+}
+
+.smile {
+  width: 40px;
+  height: 20px;
+  border: 3px solid white;
+  border-top: none;
+  border-radius: 0 0 40px 40px;
+  position: absolute;
+  bottom: 12px;
+}
+
+.robot-body {
+  width: 120px;
+  height: 100px;
+  background: linear-gradient(to bottom, white 0%, #f0f8fc 100%);
+  border-radius: 0 0 50px 50px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 164, 228, 0.1);
+}
+
+.arm {
+  width: 40px;
+  height: 80px;
+  position: absolute;
+  top: 20px;
+}
+
+.left-arm {
+  left: -35px;
+  animation: wave 2s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.right-arm {
+  right: -35px;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+}
+
+.hand {
+  width: 35px;
+  height: 35px;
+  background: #4dd4c8;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 15px rgba(77, 212, 200, 0.3);
+}
+
+/* Microphone Button */
+.mic-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a4e4 0%, #0088cc 100%);
+  border: none;
+  box-shadow: 0 8px 30px rgba(0, 164, 228, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.mic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 35px rgba(0, 164, 228, 0.5);
+}
+
+.mic-button:active {
+  transform: scale(0.95);
+}
+
+.mic-button.recording {
+  background: linear-gradient(135deg, #ff4757 0%, #ff3838 100%);
+  box-shadow: 0 8px 30px rgba(255, 71, 87, 0.4);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 30px rgba(255, 71, 87, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 40px rgba(255, 71, 87, 0.7);
+  }
+}
+
+.mic-button.processing {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Transcription */
+.transcription {
+  background: white;
+  padding: 16px 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  max-width: 100%;
+}
+
+.transcription p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.action-button:hover {
+  background: #f8f8f8;
+  border-color: #00a4e4;
+  color: #00a4e4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.action-button svg {
+  color: inherit;
+}
+
+/* Message Input */
+.message-input-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: sticky;
+  bottom: 20px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 14px;
+  background: white;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.message-input:focus {
+  border-color: #00a4e4;
+  box-shadow: 0 4px 15px rgba(0, 164, 228, 0.15);
+}
+
+.send-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4dd4c8 0%, #00b894 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(77, 212, 200, 0.4);
+  transition: all 0.3s ease;
+}
+
+.send-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(77, 212, 200, 0.5);
+}
+
+.send-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .prompt-text p {
+    font-size: 20px;
+  }
+
+  .robot {
+    width: 160px;
+    height: 200px;
+  }
+
+  .robot-head {
+    width: 120px;
+    height: 100px;
+  }
+
+  .screen {
+    width: 80px;
+    height: 60px;
+  }
+
+  .action-buttons {
+    width: 100%;
+  }
+
+  .action-button {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}
